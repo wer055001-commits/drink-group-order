@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "VibeCoding",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/Backend/Backend.csproj",
+      "preLaunchTask": "prepare",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "Now listening on:",
+        "uriFormat": "http://localhost:5173"
+      }
+    }
+  ]
+}
