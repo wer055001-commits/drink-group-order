@@ -42,8 +42,11 @@ VibeTemplate/
 │
 ├── Backend/                  ← 伺服器程式（.NET 10，C#）
 │   ├── Program.cs            ← 主程式，所有伺服器邏輯寫在這裡
+│   ├── AppDbContext.cs       ← 資料庫設定與資料模型
+│   ├── JsonStore.cs          ← JSON 檔案存取工具
 │   ├── Backend.csproj        ← 專案設定
 │   ├── appsettings.json      ← 應用程式設定
+│   ├── Data/                 ← 執行時資料（app.db、*.json，已 gitignore）
 │   └── Properties/
 │       └── launchSettings.json  ← 啟動設定（port 5248）
 │
@@ -73,6 +76,9 @@ VibeTemplate/
 - 執行於 http://localhost:5248
 - 已啟用 CORS 允許前端存取
 - 已開啟 TreatWarningsAsErrors
+- 資料庫：SQLite（EF Core），檔案位於 `Data/app.db`，啟動時自動建立
+- JSON 設定：`JsonStore<T>` 工具，檔案位於 `Data/*.json`
+- 新增資料表時在 `AppDbContext.cs` 加入模型與 `DbSet`
 
 ### 前端（Frontend）
 
