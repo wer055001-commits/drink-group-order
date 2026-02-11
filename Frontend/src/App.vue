@@ -1,85 +1,98 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
+  <div class="app-container">
+    <header class="app-header">
+      <RouterLink to="/" class="app-title">
+        <span class="title-icon">🧋</span>
+        <h1>團購飲料</h1>
+      </RouterLink>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/" class="nav-link">首頁</RouterLink>
+        <RouterLink to="/create" class="nav-link nav-create">開新團</RouterLink>
       </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    </header>
+    <main class="app-main">
+      <RouterView />
+    </main>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.app-container {
+  min-height: 100vh;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--color-card-bg);
+  border-bottom: 1px solid var(--color-card-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--color-heading);
+}
+
+.app-title h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.title-icon {
+  font-size: 28px;
 }
 
 nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  display: flex;
+  gap: 8px;
 }
 
-nav a.router-link-exact-active {
+.nav-link {
+  padding: 6px 16px;
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-text);
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.nav-link:hover {
+  background: var(--color-background-soft);
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.nav-link.router-link-exact-active {
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 
-nav a:first-of-type {
-  border: 0;
+.nav-create {
+  background: var(--color-accent);
+  color: white !important;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.nav-create:hover {
+  background: var(--color-accent-hover);
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.nav-create.router-link-exact-active {
+  background: var(--color-accent);
+  color: white !important;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.app-main {
+  padding: 20px;
 }
 </style>
