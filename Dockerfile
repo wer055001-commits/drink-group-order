@@ -10,9 +10,9 @@ RUN npm run build-only
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS backend-build
 WORKDIR /app/Backend
 COPY Backend/*.csproj ./
-RUN dotnet restore
+RUN dotnet restore Backend.csproj
 COPY Backend/ ./
-RUN dotnet publish -c Release -o /out
+RUN dotnet publish Backend.csproj -c Release -o /out
 
 # ── 第三步：合併運行 ──
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
